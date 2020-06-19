@@ -3,7 +3,7 @@ require("../connection.php");
 require("./atendente.banco.php");
 $idAtendente = $_POST['idAtendente'];
 
-if ($atendente = verificarId($connection, $idAtendente)) {
+if ($atendente = verificarIdAtendente($connection, $idAtendente)) {
     deletarAtendente($connection, $idAtendente);
     header("Location: listar.php");
 } else {

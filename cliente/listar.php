@@ -44,7 +44,7 @@ $clientes = listarClientes($connection);
                 <tr>
                     <td><?php echo $cliente->idCliente ?></td>
                     <td><?php echo $cliente->nome ?></td>
-                    <td><?php echo $cliente->dataNascimento ?></td>
+                    <td><?php echo date_format(date_create($cliente->dataNascimento) ,"d/m/Y") ?></td>
                     <td><?php echo $cliente->endereco ?></td>
                     <td><?php echo $cliente->rg ?></td>
                     <td><?php echo $cliente->cpf ?></td>

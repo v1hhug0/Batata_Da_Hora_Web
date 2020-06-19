@@ -5,13 +5,13 @@ require("./cliente.banco.php");
 
 if (isset($_GET['idCliente'])) {
     $idCliente = $_GET['idCliente'];
-    $dados = verificarId($connection, $idCliente);
+    $dados = verificarIdCliente($connection, $idCliente);
 } else {
     echo ("Cliente não encontrado");
 }
 
 function clienteBool($connection, $idCliente) {
-    return verificarId($connection, $idCliente);
+    return verificarIdCliente($connection, $idCliente);
 }
 
 if (isset($_POST['idCliente']) && clienteBool($connection, $_POST['idCliente'])) {

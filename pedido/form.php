@@ -1,46 +1,56 @@
-<input type="hidden" name="idCliente" value="<?= $dados['idCliente'] ?>">
+<input type="hidden" name="idPedido" value="<?= $dados['idPedido'] ?>">
+<input type="hidden" name="status" value="P">
+
 
 <div class="form-row mt-3 mb-3">
 
     <div class="col">
-        <label>Nome:</label>
-        <input type="text" name="nome" class="form-control" placeholder="Digite seu nome" value="<?= $dados['nome'] ?>">
+        <label>Cliente:</label>
+        <select name="fkCliente" class="form-control">
+            <option value="">Insira um Cliente</option>
+            <?php foreach ($clientes as $cliente) { ?>
+                <option value="<?= $cliente->idCliente ?>"><?= $cliente->nome ?></option>
+            <?php } ?>
+        </select>
     </div>
 
     <div class="col">
-        <label>Endereço:</label>
-        <input type="text" name="endereco" class="form-control" placeholder="Digite seu endereço" value="<?= $dados['endereco'] ?>">
+        <label>Atendente:</label>
+        <select name="fkAtendente" class="form-control">
+            <option value="">Insira um Cliente</option>
+            <?php foreach ($atendentes as $atendente) { ?>
+                <option value="<?= $atendente->idAtendente ?>"><?= $atendente->nome ?></option>
+            <?php } ?>
+        </select>
+    </div>
+
+</div>
+
+
+<div class="form-row mb-3">
+
+    <div class="col">
+        <label>Data do Pedido:</label>
+        <input type="date" name="dataPedido" class="form-control" placeholder="Digite a data do pedido" value="<?= $dados['dataPedido'] ?>">
+    </div>
+
+    <div class="col">
+        <label>Endereço de Entrega:</label>
+        <input type="text" name="enderecoEntrega" class="form-control" placeholder="Digite o endereço para entrega" value="<?= $dados['enderecoEntrega'] ?>">
     </div>
 
 </div>
 
 <div class="form-row mb-3">
 
-    <div class="col">
-        <label>RG:</label>
-        <input type="text" name="rg" class="form-control" placeholder="Digite seu RG" value="<?= $dados['rg'] ?>">
+<div class="col">
+        <label>Total:</label>
+        <input type="number" step="0.01" name="total" class="form-control" placeholder="Digite o total" value="<?= $dados['total'] ?>">
     </div>
 
     <div class="col">
-        <label>CPF:</label>
-        <input type="text" name="cpf" class="form-control" placeholder="Digite seu CPF" value="<?= $dados['cpf'] ?>">
-    </div>
-
-</div>
-
-<div class="form-row mb-3">
-
-    <div class="col">
-        <label>Telefone:</label>
-        <input type="text" name="telefone" class="form-control" placeholder="Digite seu telefone" value="<?= $dados['telefone'] ?>">
-    </div>
-
-    <div class="col">
-        <label>Email:</label>
-        <input type="text" name="email" class="form-control" placeholder="Digite seu email" value="<?= $dados['email'] ?>">
+        <label>Data da Entrega:</label>
+        <input type="date" name="dataEntrega" class="form-control" placeholder="Digite a data da entrega" value="<?= $dados['dataEntrega'] ?>">
     </div>
 
 </div>
-
-<label>Data de Nascimento:</label>
-<input type="date" name="dataNascimento" class=" form-control w-25" placeholder="Digite sua data de nascimento" value="<?= $dados['dataNascimento'] ?>">

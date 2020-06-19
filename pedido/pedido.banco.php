@@ -13,12 +13,12 @@ function listarPedidos($connection) {
     return $dados->fetchAll(PDO::FETCH_OBJ);
 }
 
-/* function cadastrarCliente($connection, $nome, $dataNascimento, $endereco, $rg, $cpf, $telefone, $email) {
-    $statement = "INSERT INTO cliente (nome, dataNascimento, endereco, rg, cpf, telefone, email) VALUES ('{$nome}', '{$dataNascimento}', '{$endereco}', '{$rg}', '{$cpf}', '{$telefone}', '{$email}')";
+ function cadastrarPedido($connection, $dataPedido, $enderecoEntrega, $total, $status, $dataEntrega, $fkCliente, $fkAtendente) {
+    $statement = "INSERT INTO pedido (dataPedido, enderecoEntrega, total, status, dataEntrega, fkCliente, fkAtendente) VALUES ('{$dataPedido}', '{$enderecoEntrega}', '{$total}', '{$status}', '{$dataEntrega}', '{$fkCliente}', '{$fkAtendente}')";
     return $connection->query($statement);
 }
 
-function atualizarCliente($connection, $idCliente, $nome, $dataNascimento, $endereco, $rg, $cpf, $telefone, $email) {
+/* function atualizarCliente($connection, $idCliente, $nome, $dataNascimento, $endereco, $rg, $cpf, $telefone, $email) {
     $statement = "UPDATE cliente SET nome = '{$nome}', dataNascimento = '{$dataNascimento}', endereco = '{$endereco}', rg = '{$rg}', cpf = '{$cpf}', telefone = '{$telefone}', email = '{$email}' WHERE idCliente = '{$idCliente}'";
     return $connection->query($statement);
 }
@@ -26,4 +26,4 @@ function atualizarCliente($connection, $idCliente, $nome, $dataNascimento, $ende
 function deletarCliente($connection, $idCliente) {
     $statement = "DELETE FROM cliente WHERE idCliente = '{$idCliente}'";
     return $connection->query($statement);
-} */
+}  */

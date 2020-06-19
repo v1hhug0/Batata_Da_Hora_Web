@@ -5,13 +5,13 @@ require("./atendente.banco.php");
 
 if (isset($_GET['idAtendente'])) {
     $idAtendente = $_GET['idAtendente'];
-    $dados = verificarId($connection, $idAtendente);
+    $dados = verificarIdAtendente($connection, $idAtendente);
 } else {
     echo ("Atendente não encontrado");
 }
 
 function atendenteBool($connection, $idAtendente) {
-    return verificarId($connection, $idAtendente);
+    return verificarIdAtendente($connection, $idAtendente);
 }
 
 if (isset($_POST['idAtendente']) && atendenteBool($connection, $_POST['idAtendente'])) {

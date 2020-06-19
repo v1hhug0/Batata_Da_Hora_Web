@@ -44,8 +44,8 @@ $atendentes = listarAtendentes($connection);
                 <tr>
                     <td><?php echo $atendente->idAtendente ?></td>
                     <td><?php echo $atendente->nome ?></td>
-                    <td><?php echo $atendente->dataNascimento ?></td>
-                    <td><?php echo $atendente->endereco ?></td>
+                    <td><?php echo date_format(date_create($atendente->dataNascimento) ,"d/m/Y") ?></td>
+                    <td><?php echo $atendente->endereco  ?></td>
                     <td><?php echo $atendente->rg ?></td>
                     <td><?php echo $atendente->cpf ?></td>
                     <td><?php echo $atendente->telefone ?></td>

@@ -3,7 +3,12 @@ require("../cabecalho.php");
 require("../connection.php");
 require("./pedido.banco.php");
 $pedidos = listarPedidos($connection);
+
+
 //print_r($pedidos[0]["idPedido"]);
+
+
+
 ?>
 
 <div class="container">

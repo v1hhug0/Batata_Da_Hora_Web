@@ -8,7 +8,7 @@ function verificarId($connection, $idPorcao) {
 }
 
 function listarPorcoes($connection) {
-    $statement = 'SELECT * FROM porcao';
+    $statement = 'SELECT idPorcao, tamanho, CONCAT("R$", FORMAT(preco, 2)) AS preco FROM porcao'; 
     $dados = $connection->query($statement);
     return $dados->fetchAll(PDO::FETCH_OBJ);
 }

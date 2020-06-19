@@ -1,7 +1,7 @@
 <?php
 require("../connection.php");
 
-function verificarId($connection, $idCliente) {
+function verificarIdCliente($connection, $idCliente) {
     $statement = "SELECT * FROM cliente WHERE idCliente = '{$idCliente}'";
     $dados = $connection->query($statement);
     return $dados->fetch(PDO::FETCH_ASSOC);
