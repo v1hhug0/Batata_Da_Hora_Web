@@ -27,3 +27,4 @@ function deletarCliente($connection, $idCliente) {
     $statement = "DELETE FROM cliente WHERE idCliente = '{$idCliente}'";
     return $connection->query($statement);
 }
+?>

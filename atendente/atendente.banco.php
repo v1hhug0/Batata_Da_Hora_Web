@@ -27,3 +27,4 @@ function deletarAtendente($connection, $idAtendente) {
     $statement = "DELETE FROM atendente WHERE idAtendente = '{$idAtendente}'";
     return $connection->query($statement);
 }
+?>

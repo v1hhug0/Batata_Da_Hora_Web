@@ -1,7 +1,6 @@
 <input type="hidden" name="idPedido" value="<?= $dados['idPedido'] ?>">
 <input type="hidden" name="status" value="P">
 
-
 <div class="form-row mt-3 mb-3">
 
     <div class="col">
@@ -26,7 +25,6 @@
 
 </div>
 
-
 <div class="form-row mb-3">
 
     <div class="col">
@@ -43,14 +41,13 @@
 
 <div class="form-row mb-3">
 
-<div class="col">
+    <div class="col">
         <label>Total:</label>
         <input type="number" step="0.01" name="total" class="form-control" placeholder="Digite o total" value="<?= $dados['total'] ?>">
     </div>
-
+    
     <div class="col">
         <label>Data da Entrega:</label>
         <input type="date" name="dataEntrega" class="form-control" placeholder="Digite a data da entrega" value="<?= $dados['dataEntrega'] ?>">
     </div>
-
 </div>

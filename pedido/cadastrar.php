@@ -20,9 +20,7 @@ $atendentes = listarAtendentes($connection);
 <div class="container mt-3">
     <h3>Cadastrar Pedido</h3>
     <form action="/Batata_Da_Hora_Web/pedido/cadastrar.php" method="POST">
-    <?php require("./form.php"); ?>
-
-    
+        <?php require("./form.php"); ?>
         <div class="mt-3">
             <input type="submit" value="Cadastrar" class="btn btn-success px-5 mt-3">
         </div>
