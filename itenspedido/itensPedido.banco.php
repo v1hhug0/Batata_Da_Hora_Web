@@ -21,12 +21,12 @@ function listarItensPedido($connection, $fkPedido) {
     return $connection->query($statement);
 }
 
-/* function atualizarCliente($connection, $idCliente, $nome, $dataNascimento, $endereco, $rg, $cpf, $telefone, $email) {
-    $statement = "UPDATE cliente SET nome = '{$nome}', dataNascimento = '{$dataNascimento}', endereco = '{$endereco}', rg = '{$rg}', cpf = '{$cpf}', telefone = '{$telefone}', email = '{$email}' WHERE idCliente = '{$idCliente}'";
+function atualizarItens($connection, $quantidade, $fkPedido, $fkPorcao, $quantidadeAntiga) {
+    $statement = "UPDATE itenspedido SET quantidade = '{$quantidade}', fkPedido = '{$fkPedido}', fkPorcao = '{$fkPorcao}' WHERE fkPedido = '{$fkPedido}' AND quantidade = '{$quantidadeAntiga}'";
     return $connection->query($statement);
 }
 
-function deletarCliente($connection, $idCliente) {
+/* function deletarCliente($connection, $idCliente) {
     $statement = "DELETE FROM cliente WHERE idCliente = '{$idCliente}'";
     return $connection->query($statement);
 }  */

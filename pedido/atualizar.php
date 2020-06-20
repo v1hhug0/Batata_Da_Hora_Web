@@ -1,45 +1,34 @@
 <?php
 require("../cabecalho.php");
 require("../connection.php");
-require("./cliente.banco.php");
+require("./pedido.banco.php");
+require("../cliente/cliente.banco.php");
+require("../atendente/atendente.banco.php");
+require("../porcao/porcao.banco.php");
+require("../itenspedido/itensPedido.banco.php");
+$clientes = listarClientes($connection);
+$atendentes = listarAtendentes($connection);
 
-if (isset($_GET['idCliente'])) {
-    $idCliente = $_GET['idCliente'];
-    $dados = verificarId($connection, $idCliente);
+
+if (isset($_GET['idPedido'])) {
+    $idPedido = $_GET['idPedido'];
+    $dados = verificarIdPedido($connection, $idPedido);
 } else {
-    echo ("Cliente não encontrado");
+    echo ("Pedido não encontrado");
 }
 
-function clienteBool($connection, $idCliente) {
-    return verificarId($connection, $idCliente);
+function pedidoBool($connection, $idPedido) {
+    return verificarIdPedido($connection, $idPedido);
 }
 
-if (isset($_POST['idCliente']) && clienteBool($connection, $_POST['idCliente'])) {
-    $idCliente = $_POST['idCliente'];
-    $nome = $_POST['nome'];
-    $dataNascimento = $_POST['dataNascimento'];
-    $endereco = $_POST['endereco'];
-    $rg = $_POST['rg'];
-    $cpf = $_POST['cpf'];
-    $telefone = $_POST['telefone'];
-    $email = $_POST['email'];
 
-    if (atualizarCliente($connection, $idCliente, $nome, $dataNascimento, $endereco, $rg, $cpf, $telefone, $email)) {
-        echo ("Cliente atualizado com sucesso!");
-    } else {
-        echo ("Cliente não foi atualizado");
-    }
-
-    header("Location: listar.php");
-    die();
-}
 
 ?>
 
 <div class="container">
-    <h3>Atualizar Cliente</h3>
+    <h3>Atualizar Pedido Nº <?= $idPedido ?></h3>
 
-    <form action="/Batata_Da_Hora_Web/cliente/atualizar.php?idCliente=<?= $idCliente ?>" method="POST">
+    <form action="/Batata_Da_Hora_Web/pedido/atualizar.php?idPedido=<?= $idPedido ?>" method="POST">
         <?php
         require("./form.php");
         ?>
@@ -53,4 +42,57 @@ if (isset($_POST['idCliente']) && clienteBool($connection, $_POST['idCliente']))
 </div>
 
 <?php
+if (isset($_POST['idPedido']) && pedidoBool($connection, $_POST['idPedido'])) {
+    $idPedido = $_POST['idPedido'];
+    $dataPedido = $_POST['dataPedido'];
+    $enderecoEntrega = $_POST['enderecoEntrega'];
+    $total = $_POST['total'];
+    $status = $_POST['status'];
+        if ($_POST['dataEntrega'] != "") {
+            $status = "E";
+        }
+    $dataEntrega = $_POST['dataEntrega'];
+    $fkCliente = $_POST['fkCliente'];
+    $fkAtendente = $_POST['fkAtendente'];
+
+    if (atualizarPedido($connection, $idPedido, $dataPedido, $enderecoEntrega, $total, $status, $dataEntrega, $fkCliente, $fkAtendente)) {
+
+        $quantidade1 = $_POST['quantidade1'];
+        $fkPedido1 = $idPedido;
+        $fkPorcao1 = 1;
+        
+
+        $quantidade2 = $_POST['quantidade2'];
+        $fkPedido2 = $idPedido;
+        $fkPorcao2 = 2;
+
+        $quantidade3 = $_POST['quantidade3'];
+        $fkPedido3 = $idPedido;
+        $fkPorcao3 = 3;
+
+        if ($p1 != "") {
+            atualizarItens($connection, $quantidade1, $fkPedido1, $fkPorcao1, $quantidadeAntiga1);
+        } elseif ($quantidade1 > 0) {
+            cadastrarItens($connection, $quantidade1, $fkPedido1, $fkPorcao1);
+        }
+
+        if ($p2 != "") {
+            atualizarItens($connection, $quantidade2, $fkPedido2, $fkPorcao2, $quantidadeAntiga2);
+        } elseif ($quantidade2 > 0) {
+            cadastrarItens($connection, $quantidade2, $fkPedido2, $fkPorcao2);
+        }
+
+        if ($p3 != "") {
+            atualizarItens($connection, $quantidade3, $fkPedido3, $fkPorcao3, $quantidadeAntiga3);
+        } elseif ($quantidade3 > 0) {
+            cadastrarItens($connection, $quantidade3, $fkPedido3, $fkPorcao3);
+        }
+
+    } else {
+        echo ("Pedido não foi atualizado");
+    }
+
+    header("Location: listar.php");
+    die();
+}
 require("../rodape.php");

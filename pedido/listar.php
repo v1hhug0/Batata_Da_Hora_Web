@@ -65,6 +65,10 @@ $pedidos = listarPedidos($connection);
                                 <a href="/Batata_Da_Hora_Web/itenspedido/listar.php?idPedido=<?= $pedido->idPedido ?>" class="btn btn-info">Detalhar</a>
                             </div>
 
+                            <div class="col">
+                                <a href="/Batata_Da_Hora_Web/pedido/atualizar.php?idPedido=<?= $pedido->idPedido ?>" class="btn btn-warning">Editar</a>
+                            </div>
+
                         </div>
 
                     </td>

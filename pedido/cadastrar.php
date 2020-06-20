@@ -40,12 +40,12 @@ if (hasPost()) {
     $enderecoEntrega = $_POST['enderecoEntrega'];
     $total = $_POST['total'];
     $status = $_POST['status'];
-    $dataEntrega = $_POST['dataEntrega'];
+    $dataEntrega = "";
     $fkCliente = $_POST['fkCliente'];
     $fkAtendente = $_POST['fkAtendente'];
 
 
-    if (cadastrarPedido($connection, $dataPedido, $enderecoEntrega, $total, $status, $dataEntrega, $fkCliente, $fkAtendente)) {
+    if (cadastrarPedido($connection, $dataPedido, $enderecoEntrega, $total, $status, $fkCliente, $fkAtendente)) {
 
         $id = buscarPedido($connection, $dataPedido, $total, $fkCliente);
         $quantidade1 = $_POST['quantidade1'];
@@ -62,9 +62,11 @@ if (hasPost()) {
 
         if ($quantidade1 != 0) {
             cadastrarItens($connection, $quantidade1, $fkPedido1, $fkPorcao1);
-        } elseif ($quantidade2 != 0) {
+        }
+        if ($quantidade2 != 0) {
             cadastrarItens($connection, $quantidade2, $fkPedido2, $fkPorcao2);
-        } elseif ($quantidade3 != 0) {
+        }
+        if ($quantidade3 != 0) {
             cadastrarItens($connection, $quantidade3, $fkPedido3, $fkPorcao3);
         }
 
