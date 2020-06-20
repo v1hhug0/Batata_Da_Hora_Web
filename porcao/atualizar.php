@@ -5,13 +5,13 @@ require("./porcao.banco.php");
 
 if (isset($_GET['idPorcao'])) {
     $idPorcao = $_GET['idPorcao'];
-    $dados = verificarId($connection, $idPorcao);
+    $dados = verificarIdPorcao($connection, $idPorcao);
 } else {
     echo ("Porção não encontrada");
 }
 
 function porcaoBool($connection, $idPorcao) {
-    return verificarId($connection, $idPorcao);
+    return verificarIdPorcao($connection, $idPorcao);
 }
 
 if (isset($_POST['idPorcao']) && porcaoBool($connection, $_POST['idPorcao'])) {

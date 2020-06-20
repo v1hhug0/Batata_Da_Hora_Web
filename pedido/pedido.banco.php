@@ -11,4 +11,12 @@ function listarPedidos($connection) {
     $statement = "INSERT INTO pedido (dataPedido, enderecoEntrega, total, status, dataEntrega, fkCliente, fkAtendente) VALUES ('{$dataPedido}', '{$enderecoEntrega}', '{$total}', '{$status}', '{$dataEntrega}', '{$fkCliente}', '{$fkAtendente}')";
     return $connection->query($statement);
 }
+
+function buscarPedido($connection, $dataPedido, $total, $fkCliente ) {
+    $statement = "SELECT idPedido FROM pedido WHERE dataPedido = '{$dataPedido}' AND total = '{$total}' AND fkcliente = '{$fkCliente}'";
+    $dados = $connection->query($statement);
+    return $dados->fetch(PDO::FETCH_ASSOC);
+}
+
+
 ?>

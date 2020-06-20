@@ -1,7 +1,7 @@
 <?php
 require("../connection.php");
 
-function verificarId($connection, $idPorcao) {
+function verificarIdPorcao($connection, $idPorcao) {
     $statement = "SELECT * FROM porcao WHERE idPorcao = '{$idPorcao}'";
     $dados = $connection->query($statement);
     return $dados->fetch(PDO::FETCH_ASSOC);
@@ -9,6 +9,12 @@ function verificarId($connection, $idPorcao) {
 
 function listarPorcoes($connection) {
     $statement = 'SELECT idPorcao, tamanho, CONCAT("R$", FORMAT(preco, 2)) AS preco FROM porcao'; 
+    $dados = $connection->query($statement);
+    return $dados->fetchAll(PDO::FETCH_OBJ);
+}
+
+function contarPorcoes($connection) {
+    $statement = 'SELECT COUNT(idPorcao) AS porcaoQtd FROM porcao'; 
     $dados = $connection->query($statement);
     return $dados->fetchAll(PDO::FETCH_OBJ);
 }
